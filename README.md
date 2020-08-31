@@ -27,9 +27,18 @@ Follow the instructions for installing the TS4231 library.  You can then run the
 ###### Decoding .dat files
 copy .dat file from gdrive
 gcc .c files
-cmd line: ./file.out DATA BASE
+```
+./a.out DATA BASE
+```
+Replace DATA with the data, and replace BASE with base of the data (2 for binary, 16 for hex)
+
+example:
+```
+./a.out 3dad374e 16
+```
 
 ###### Running jdavidberger's code
+Mostly here for cross-referencing decoding, but you can still run the code
 run 'make' in the forked repo
 then you can run the individual scripts
 
