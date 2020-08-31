@@ -13,7 +13,7 @@ The lh2 has a single rotor with two points that emit IR data.  This data is enco
 Once data is captured on the device, it can be decoded and used to determine the polynomial being used by the lighthouse.  Once the polynomial is determined, the location of the data within a duplicate of the LFSR can be used to determine the angle where the sweep was detected.
 
 ## Result
-Currently, the project is not in a fully working state.  It took a significant amount of time in order to configure the TS4231 correctly to work in LH2 mode.  After that, it was determining how to capture the data quickly enough (which was difficult/impossible for the MCUs I attempted).  The Adafruit Feather M0 (which was the only board I could get the TS4231 to config with), has the potential to work faster enought to capture the data.
+Currently, the project is not in a fully working state.  It took a significant amount of time in order to configure the TS4231 correctly to work in LH2 mode.  After that, it was determining how to capture the data quickly enough (which was difficult/impossible for the MCUs I attempted).  Every consumer option for capturing and decoding signals from the lighthouses uses an FPGA in order to meet the timing restrictions of the fast data.  However, I went with the approach to attempt this without a FPGA.  The Adafruit Feather M0 (which was the only board I could get the TS4231 to config with), has the potential to work faster enought to capture the data.  
 
 It utilizes the event system with triggers from an edge detecting input capture.  The triggers starts a timer to count how long between detected edges, and then sends the result of that timer to memory with DMA.  Relying on the cpu to write to memory will not work as it is too slow.  Running the system at 48 Mhz achieved a timer count of 5-6 between 83ns pulses (the data is at 12 MHz).  
 
@@ -25,7 +25,6 @@ Currently, the decoders are not built to interpret live data.  That is in the te
 Follow the instructions for installing the TS4231 library.  You can then run the example included with the library through the arduino IDE to configure your chip.
 
 ###### Decoding .dat files
-copy .dat file from gdrive
 gcc .c files
 ```
 ./a.out DATA BASE
@@ -41,6 +40,7 @@ example:
 Mostly here for cross-referencing decoding, but you can still run the code
 run 'make' in the forked repo
 then you can run the individual scripts
+To run the r2x0t decoder, ensure you have copied the .dat file from [my gdrive](https://drive.google.com/drive/folders/12Eklw1Go7awLNGuiIleKngBPq0iUU-Ks?usp=sharing) or one from [cnlohr's gdrive](https://drive.google.com/drive/folders/1iN0vuhsRMY6tCWZOCC9F4SSBbT9ljmq7?usp=sharing)
 
 
 ## Future Progress
