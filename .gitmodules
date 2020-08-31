@@ -1,0 +1,3 @@
+[submodule "lighthouse2tools"]
+	path = lighthouse2tools
+	url = git@github.com:bespeland/lighthouse2tools.git
